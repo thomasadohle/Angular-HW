@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+
+  <li class="nav-item lessonListItem" id="lessonListItem" *ngFor="let lesson of lessons">
+
+    <div class="col-12" id="divInsideLessonListItemRow">
+      <button type="button" class="btn btn-warning" id="lessonButton"
+      >{{lesson.title}}</button>
+    </div>
+  </li>
+</ul>

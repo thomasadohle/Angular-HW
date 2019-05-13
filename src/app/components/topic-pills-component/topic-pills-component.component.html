@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs">
+  <li key={topic.id} class="nav-item" id="topicListItem" *ngFor="let topic of topics">
+    <div class="col-12" id="divInsideTopicListItemRow">
+      <button type="button" class="btn btn-info" id={topic.title}
+      >{{topic.title}}</button>
+    </div>
+  </li>
+</ul>

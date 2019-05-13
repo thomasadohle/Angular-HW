@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row col-12" id="wbdv-top-nav">
+    <div class="col-lg-10 col-sm-8" id="wbdv-course-title">{{course.title}}</div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-3 wbdv-content-panel" id="wbdv-module-list-container">
+
+      <div>
+        <h3 id="moduleListTitle">Module List</h3>
+        <ul class="nav flex-column nav-pills">
+          <li class="list-group-item nav-link wbdv-module-list-item deb-class" *ngFor="let module of modules">
+            <div class="col-lg-12 row">
+              <div class="col-6">
+                <button type="button" class="btn btn-warning active" (click)="selectModule(module)"
+                >{{module.moduleTitle}}</button>
+              </div>
+
+              <div class="col-1">
+              </div>
+              <div class="col-1">
+              </div>
+              <div class="col-1">
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-9 wbdv-content-panel">
+      <app-lesson-tabs-component [module]="module"></app-lesson-tabs-component>
+      <br/>
+      <div class="row col-12">
+        <app-topic-pills-component></app-topic-pills-component>
+      </div>
+      <div class="row col-12 container"
+           id="wbdv-widget-container">
+        <!--WidgetList -->
+
+      </div>
+    </div>
+  </div>
+</div>
