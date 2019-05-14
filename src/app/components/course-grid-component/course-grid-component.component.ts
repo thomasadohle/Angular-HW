@@ -12,6 +12,11 @@ export class CourseGridComponentComponent implements OnInit {
 
   constructor(private service: CourseServiceClient) { }
   courses = [];
+  selectedCourse = {};
+  selectCourse = course => {
+    console.log(course);
+    this.selectedCourse = course;
+  }
   ngOnInit() {
     this.service.findAllCourses().then(courses => this.courses = courses);
   }

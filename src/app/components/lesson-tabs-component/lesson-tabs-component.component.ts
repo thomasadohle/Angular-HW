@@ -17,7 +17,7 @@ export class LessonTabsComponentComponent implements OnInit {
   lessons = [];
   ngOnInit() {
     console.log('the module sent to lesson tabs is: ' + JSON.stringify(this.module));
-    this.service.findAllLessons(this.module.id).then(lessons => this.lessons = lessons);
+    this.service.findLessonsForModule(this.module.id).then(lessons => this.lessons = lessons);
   }
 
 }

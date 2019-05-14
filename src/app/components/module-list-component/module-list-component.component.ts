@@ -27,7 +27,7 @@ export class ModuleListComponentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.findAllModules(this.course.id).then(modules => this.modules = modules);
+    this.service.findModulesForCourse(this.course.id).then(modules => this.modules = modules);
     console.log(this.modules);
   }
 

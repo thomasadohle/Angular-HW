@@ -1,3 +1,6 @@
+import {Injectable} from '@angular/core';
+
+@Injectable()
 export class CourseServiceClient {
   baseUrl: string;
 
@@ -11,5 +14,16 @@ export class CourseServiceClient {
       method: 'GET',
       credentials: 'include'
     }).then(response => response.json());
+  }
+
+  findCourseById = courseId => {
+    const url = this.baseUrl + '/api/courses/' + courseId
+    return fetch(url, {
+      method: 'GET',
+      credentials: 'include'
+    }).then(response => response.json())
+      .then(json => json
+      )
+      .catch(error => console.log('error in findCourseById: ' + error))
   }
 }

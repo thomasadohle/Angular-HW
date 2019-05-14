@@ -17,7 +17,7 @@ export class TopicPillsComponentComponent implements OnInit {
   topics = [];
 
   ngOnInit() {
-    this.service.findAllTopics(this.lesson.id).then(topics => this.topics = topics);
+    this.service.findTopicsForLesson(this.lesson.id).then(topics => this.topics = topics);
   }
 
 }
