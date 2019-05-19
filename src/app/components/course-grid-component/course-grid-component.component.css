@@ -44,3 +44,7 @@ body{
   background: var(--pg-bg-color);
 }
 
+.wbdv.active{
+  color: #1c7430;
+}
+

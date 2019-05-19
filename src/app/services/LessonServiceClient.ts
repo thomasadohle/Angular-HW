@@ -18,6 +18,7 @@ export class LessonServiceClient {
 
   findLessonsForModule = (moduleId) => {
     const url = this.baseUrl + '/api/modules/' + moduleId + '/lessons';
+    console.log('findLessonsForModule called with url ' + url);
     return fetch(url, {
       method: 'GET',
       credentials: 'include'

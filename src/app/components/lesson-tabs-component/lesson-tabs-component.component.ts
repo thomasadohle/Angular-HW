@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LessonServiceClient} from '../../services/LessonServiceClient';
 import {Module} from '../../models/module';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ModuleServiceClient} from '../../services/ModuleServiceClient';
 
 
 @Component({
@@ -10,14 +12,35 @@ import {Module} from '../../models/module';
 })
 export class LessonTabsComponentComponent implements OnInit {
 
-  constructor(private service: LessonServiceClient) { }
+  constructor(private service: LessonServiceClient, private route: ActivatedRoute,
+              private moduleService: ModuleServiceClient, private router: Router) {
+    this.route.params.subscribe(params => this.params = params);
+    console.log('lessons found by lesson-tabs-component: ' + this.lessons);
+    this.courseId = this.params.courseId;
+    this.moduleId = this.params.moduleId;
+    this.service.findLessonsForModule(this.moduleId).then(lessons => this.lessons = lessons);
+  }
 
-
-  @Input() module: Module;
+  // @Input() module: Module;
+  courseId: number;
+  moduleId: number;
+  lessonId: number;
+  params: Params;
   lessons = [];
+  selectedLesson = {};
+  selectLesson = lesson => {
+    this.selectedLesson = lesson;
+    this.router.navigate(['course', this.courseId, 'module', this.moduleId, 'lesson', lesson.id]);
+  }
   ngOnInit() {
-    console.log('the module sent to lesson tabs is: ' + JSON.stringify(this.module));
-    this.service.findLessonsForModule(this.module.id).then(lessons => this.lessons = lessons);
+    // const url = this.router.url;
+    // const urlPieces = url.split('/');
+    // for (let i = 0; i < urlPieces.length; i++) {
+    //   if (urlPieces[i] === 'module') {
+    //     this.moduleId = Number(urlPieces[i + 1]);
+    //   }
+    // }
+    // this.service.findLessonsForModule(this.moduleId).then(lessons => this.lessons = lessons);
   }
 
 }

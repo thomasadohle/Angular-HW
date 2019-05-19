@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TopicServiceClient} from '../../services/TopicServiceClient';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-topic-pills-component',
@@ -8,16 +9,15 @@ import {TopicServiceClient} from '../../services/TopicServiceClient';
 })
 export class TopicPillsComponentComponent implements OnInit {
 
-  constructor(private service: TopicServiceClient) { }
-
-  lesson = {
-    id: 2,
-    title: 'John Lesson'
+  constructor(private service: TopicServiceClient, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => this.lessonId = params.lessonId);
+    this.service.findTopicsForLesson(this.lessonId).then(topics => this.topics = topics);
   }
+
+  lessonId: number;
   topics = [];
 
   ngOnInit() {
-    this.service.findTopicsForLesson(this.lesson.id).then(topics => this.topics = topics);
   }
 
 }

@@ -11,17 +11,50 @@
   </div>
   <div class="card-deck col-12">
     <div class="col-sm-12 col-md-4 col-lg-2" *ngFor="let course of courses"
-                                              (click)="selectCourse(course)">
+         (click)="selectCourse(course)">
       <div class="card">
-      <img class="card-img-top"
-           src="https://picsum.photos/300/200"/>
-      <div class="card-body">
-        <h5 class="card-title">{{course.courseTitle}}</h5>
-        <p class="card-text">Card text.</p>
-        <!--Need to put the link-->
+        <img class="card-img-top"
+             src="https://picsum.photos/300/200"/>
+        <div class="card-body">
+          <h5 class="card-title">{{course.courseTitle}}</h5>
+          <p class="card-text">Card text.</p>
+          <!--Need to put the link-->
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
+
+
+
+
+<!--
+<h1>Course Navigator</h1>
+<div class="row">
+  <div class="col-3">
+    <ul class="list-group">
+      <li class="active list-group-item">
+        Courses
+      </li>
+      <li *ngFor="let course of courses"
+          (click)="selectCourse(course)"
+          [ngClass]="{'active': course.id === selectedCourse.id}"
+          class="webdev list-group-item"
+          routerLink="/course/$(course.id)/module">
+        {{course.courseTitle}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-3">
+    <ul class="list-group">
+      <li class="active list-group-item">
+        Modules
+      </li>
+      <router-outlet></router-outlet>
+    </ul>
+  </div>
+  <div class="col-3">Lessons</div>
+  <div class="col-3">Widgets</div>
 </div>
+-->
