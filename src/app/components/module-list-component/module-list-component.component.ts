@@ -17,7 +17,7 @@ export class ModuleListComponentComponent implements OnInit {
     this.service.findModulesForCourse(this.courseId).then(modules => this.modules = modules);
   }
   courseId: number;
-  course = {};
+  course = {courseTitle: ''};
   modules = [];
   selectedModule = {};
   lessons = [];
