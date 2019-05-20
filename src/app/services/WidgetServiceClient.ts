@@ -17,7 +17,8 @@ export class WidgetServiceClient {
   }
 
   findWidgetsForTopic = (topicId) => {
-    const url = this.baseUrl + '/api/topics/'+ topicId + '/widgets';
+    const url = this.baseUrl + '/api/topic/' + topicId + '/widget';
+    console.log('findWidgetsForTopic called with url ' + url);
     return fetch(url, {
       method: 'GET',
       credentials: 'include'

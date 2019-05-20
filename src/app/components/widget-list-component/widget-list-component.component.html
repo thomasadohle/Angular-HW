@@ -1,3 +1,59 @@
-<p>
-  widget-list-component works!
-</p>
+
+
+  <div class = ' row col-12' id="cont1">
+    <div class ='col-12' id="cont2">
+      <div class='list-group col-12' id='widget-list'>
+        <div *ngFor="let widget of widgets"
+             class='row col-12 container wbdv-heading-widget centered wbdv-widget widget-render'
+        data-name='sample-image-widget'>
+          <div class='col-lg-12 wbdv-widget-first-row card'>
+            <div class='col-lg-12 wbdv-widget-title card-body'>
+              <h3>{{widget.title}}</h3>
+            </div>
+
+
+            <div *ngIf="widget.widgetType === 'HEADING' "
+                 class='card-text col-lg-12 wbdv-heading-widget-enter-heading '>
+              <div *ngIf = "widget.size === 1" class='row col-lg-12'>
+                <h1>{{widget.text}}</h1>
+              </div>
+              <div *ngIf = "widget.size === 2" class='row col-lg-12'>
+                <h2>{{widget.text}}</h2>
+              </div>
+              <div *ngIf = "widget.size === 3" class='row col-lg-12'>
+                <h3>{{widget.text}}</h3>
+              </div>
+
+            </div>
+
+            <div *ngIf="widget.widgetType === 'IMAGE' "
+                 class='card-text col-lg-12 '>
+                <img class='card-img' src="{{widget.source}}">
+            </div>
+
+            <div *ngIf="widget.widgetType === 'LIST' "
+                 class='card-text col-lg-12 '>
+              <div *ngIf="widget.ordered">
+                <ol>
+                  <li *ngFor="let item of widget.items">{{item}}</li>
+                </ol>
+              </div>
+              <div *ngIf="! widget.ordered">
+                <ul>
+                  <li *ngFor="let item of widget.items">{{item}}</li>
+                </ul>
+              </div>
+            </div>
+
+            <div *ngIf="widget.widgetType === 'PARAGRAPH' "
+                 class='card-text col-lg-12 '>
+              {{widget.text}}
+            </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+

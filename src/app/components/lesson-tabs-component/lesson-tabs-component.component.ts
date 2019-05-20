@@ -15,7 +15,6 @@ export class LessonTabsComponentComponent implements OnInit {
   constructor(private service: LessonServiceClient, private route: ActivatedRoute,
               private moduleService: ModuleServiceClient, private router: Router) {
     this.route.params.subscribe(params => this.params = params);
-    console.log('lessons found by lesson-tabs-component: ' + this.lessons);
     this.courseId = this.params.courseId;
     this.moduleId = this.params.moduleId;
     this.service.findLessonsForModule(this.moduleId).then(lessons => this.lessons = lessons);
